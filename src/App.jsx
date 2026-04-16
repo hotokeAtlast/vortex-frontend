@@ -14,6 +14,7 @@ import Admin from './pages/Admin';
 import Toast from './components/Toast';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+import NotFound from './pages/NotFound';
 
 function App() {
   // Default to dark theme
@@ -53,6 +54,7 @@ function App() {
             </main>
             <Footer />
           </div>
+          <Route path="*" element={<NotFound />} />
         </Router>
       </CartProvider>
     </AuthProvider>
