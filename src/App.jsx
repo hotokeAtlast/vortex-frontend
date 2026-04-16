@@ -50,11 +50,11 @@ function App() {
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />
           </div>
-          <Route path="*" element={<NotFound />} />
         </Router>
       </CartProvider>
     </AuthProvider>
