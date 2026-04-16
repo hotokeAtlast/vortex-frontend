@@ -81,7 +81,7 @@ export default function Cart() {
         >
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
         </Link>
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+        <h1 className="text-3xl font-extrabold font-sans text-gray-900 dark:text-white tracking-tight">
           Your Cart
         </h1>
       </div>
@@ -92,11 +92,11 @@ export default function Cart() {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col sm:flex-row items-center gap-6 bg-white dark:bg-gray-900 p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md dark:hover:shadow-amber-900/10 transition-shadow"
+              // FIX 1: Changed to flex-row on mobile so it looks like a proper list, added font-sans to lock typography
+              className="flex flex-row items-center gap-4 p-4 bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700/50 rounded-2xl shadow-sm mb-4 font-sans"
             >
               {/* Image Placeholder */}
-              {/* Image Container */}
-              <div className="w-full sm:w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-xl flex-shrink-0 overflow-hidden border border-gray-200 dark:border-gray-700/50">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 bg-gray-100 dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
                 {item.imageUrl ? (
                   <img
                     src={item.imageUrl}
@@ -105,7 +105,7 @@ export default function Cart() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center px-2 font-bold">
+                    <span className="text-[10px] text-gray-400 font-bold tracking-widest uppercase">
                       No Visage
                     </span>
                   </div>
@@ -113,14 +113,16 @@ export default function Cart() {
               </div>
 
               {/* Details */}
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                  <a href={`./product/${item.id}`}>{item.name}</a>
+              <div className="flex flex-col flex-grow min-w-0">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate">
+                  {item.name}
                 </h3>
-                <p className="text-sm text-amber-600 dark:text-amber-500 font-medium mb-1">
-                  {item.price}
+                <p className="text-amber-600 dark:text-amber-500 font-bold mt-0.5">
+                  ₹{item.price.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500">{item.tag}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate mt-1">
+                  {item.tag || "Artifact"}
+                </p>
               </div>
 
               {/* Controls */}
