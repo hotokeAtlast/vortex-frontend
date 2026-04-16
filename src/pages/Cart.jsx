@@ -115,7 +115,7 @@ export default function Cart() {
               {/* Details */}
               <div className="flex flex-col flex-grow min-w-0">
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate">
-                  {item.name}
+                  <a href={`./product/${item.id}`}>{item.name}</a>
                 </h3>
                 <p className="text-amber-600 dark:text-amber-500 font-bold mt-0.5">
                   {item.price.toLocaleString()}
