@@ -15,6 +15,7 @@ import Toast from './components/Toast';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import NotFound from './pages/NotFound';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   // Default to dark theme
@@ -37,6 +38,7 @@ function App() {
 <AuthProvider>
       <CartProvider>
         <Router>
+          <ScrollToTop />
           <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
             <Navbar toggleTheme={toggleTheme} theme={theme} />
             <Toast />
