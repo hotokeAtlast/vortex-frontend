@@ -118,7 +118,7 @@ export default function Cart() {
                   {item.name}
                 </h3>
                 <p className="text-amber-600 dark:text-amber-500 font-bold mt-0.5">
-                  ₹{item.price.toLocaleString()}
+                  {item.price.toLocaleString()}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400 truncate mt-1">
                   {item.tag || "Artifact"}
