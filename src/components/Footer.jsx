@@ -35,7 +35,7 @@ export default function Footer() {
             <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Support</h3>
             <ul className="space-y-3">
               {/* Note: Standard <a> tags here since they might eventually link externally, but you can change to <Link> if making real pages */}
-              <li><a href="#" className="text-gray-500 dark:text-gray-400 hover:text-amber-500 transition-colors font-medium">Contact The Fool</a></li>
+              <li><a href="mailto:hotoke.atlast@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-amber-500 transition-colors font-medium">Contact The Fool</a></li>
               <li><a href="#" className="text-gray-500 dark:text-gray-400 hover:text-amber-500 transition-colors font-medium">Privacy Policy</a></li>
               <li><a href="#" className="text-gray-500 dark:text-gray-400 hover:text-amber-500 transition-colors font-medium">Terms of Exchange</a></li>
             </ul>
@@ -50,9 +50,15 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-6 text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
-            <a href="#" className="hover:text-amber-500 transition-colors">X (Twitter)</a>
-            <a href="#" className="hover:text-amber-500 transition-colors">Discord</a>
-            <a href="#" className="hover:text-amber-500 transition-colors">GitHub</a>
+            <a href="https://x.com/notGehrman" className="hover:text-amber-500 transition-colors" target="_blank" rel="noopener noreferrer">
+              X (Twitter)
+            </a>
+            <a href="https://discord.com/users/1189602830634471520" className="hover:text-amber-500 transition-colors" target="_blank" rel="noopener noreferrer">
+              Discord
+            </a>
+            <a href="https://github.com/hotokeAtlast" className="hover:text-amber-500 transition-colors" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
           </div>
         </div>
 
