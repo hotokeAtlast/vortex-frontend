@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+  </defs>
+  
+  <path d="M50 5C25.1 5 5 25.1 5 50C5 74.9 25.1 95 50 95C74.9 95 95 74.9 95 50" stroke="url(#amberGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="140 40" transform="rotate(45 50 50)"/>
+  
+  <path d="M50 15C30.7 15 15 30.7 15 50C15 69.3 30.7 85 50 85C69.3 85 85 69.3 85 50" stroke="url(#amberGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="100 60" transform="rotate(-30 50 50)"/>
+  
+  <circle cx="50" cy="50" r="18" fill="url(#amberGrad)"/>
+  
+  <path d="M50 38C50 45 45 50 38 50C45 50 50 55 50 62C50 55 55 50 62 50C55 50 50 45 50 38Z" fill="#ffffff" opacity="0.9"/>
+</svg>
