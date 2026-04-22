@@ -25,8 +25,8 @@ export default function Profile() {
     }
   };
 
-  // Replace this with your actual email to show the Admin button
-  const ADMIN_EMAIL = "your_email@gmail.com"; 
+  
+  const ADMIN_EMAIL = "hotoke.atlast@gmail.com";
   const isAdmin = currentUser.email === ADMIN_EMAIL;
 
   return (
