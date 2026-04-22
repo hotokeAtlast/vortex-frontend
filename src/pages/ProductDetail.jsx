@@ -123,7 +123,7 @@ export default function ProductDetail() {
               </p>
             )}
             <p className="text-3xl font-black text-amber-600 dark:text-amber-500">
-              {product.price}
+              ₹{product.price.toLocaleString('en-IN')}
             </p>
           </div>
 

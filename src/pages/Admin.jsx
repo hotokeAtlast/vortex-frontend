@@ -11,6 +11,8 @@ export default function Admin() {
 
   const [loading, setLoading] = useState(false);
   const [imageUpload, setImageUpload] = useState(null);
+
+  const [note, setNote] = useState([]);
   
   // New States for Edit/Delete functionality
   const [artifacts, setArtifacts] = useState([]);
@@ -110,11 +112,25 @@ export default function Admin() {
         // UPDATE existing document
         const productRef = doc(db, "products", editId);
         await updateDoc(productRef, productData);
-        alert("Artifact updated successfully!");
+        
+
+        const successMsg = "Updated artifact: " + productData.name;
+        setNote(prev => [...prev, successMsg])
+        setTimeout(() => {
+          setNote(prev => prev.filter(msg => msg !== successMsg));
+        }, 4000); // Auto-remove after 4 seconds
+
+
       } else {
         // CREATE new document
         await addDoc(collection(db, "products"), productData);
-        alert("Artifact successfully forged!");
+        // alert("Artifact successfully forged!");
+        const successMsg = "Forged artifact: " + productData.name;
+        setNote(prev => [...prev, successMsg])
+
+        setTimeout(() => {
+          setNote(prev => prev.filter(msg => msg !== successMsg));
+        }, 4000); // Auto-remove after 4 seconds
       }
       
       resetForm();
@@ -122,13 +138,20 @@ export default function Admin() {
 
     } catch (error) {
       console.error("Error saving document: ", error);
-      alert("Operation failed!");
+      // alert("Operation failed!");
+      const errorMsg = "Operation failed: " + error.message;
+      setNote(prev => [...prev, errorMsg]);
+      setTimeout(() => {
+        setNote(prev => prev.filter(msg => msg !== errorMsg));
+      }, 5000); // Auto-remove after 5 seconds
+      console.log(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
+    
     <div className="max-w-5xl mx-auto py-8 px-4 animate-in fade-in duration-500">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">The Forge</h1>
@@ -237,6 +260,36 @@ export default function Admin() {
           </ul>
         )}
       </div>
+
+      {note.length > 0 && (
+        <div className="fixed top-24 right-6 z-50 flex flex-col gap-3 pointer-events-none">
+          {note.map((msg, index) => (
+            <div 
+              key={index}
+              className="bg-white dark:bg-gray-800 border-l-4 border-amber-500 shadow-2xl shadow-amber-900/20 rounded-r-lg p-4 min-w-[300px] max-w-md animate-in fade-in slide-in-from-right-8 duration-300 pointer-events-auto flex justify-between items-start"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-amber-500 text-lg">✦</span>
+                <span className="text-gray-800 dark:text-gray-200 font-medium text-sm">
+                  {msg}
+                </span>
+              </div>
+              
+              {/* Manual Dismiss Button */}
+              <button 
+                onClick={() => {
+                  const newNotes = [...note];
+                  newNotes.splice(index, 1);
+                  setNote(newNotes);
+                }}
+                className="text-gray-400 hover:text-amber-500 transition-colors ml-4 focus:outline-none"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
 
     </div>
   );

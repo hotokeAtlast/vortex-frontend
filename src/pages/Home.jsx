@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,7 +12,12 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "products"));
+        const q = query(
+          collection(db, "products"),
+          orderBy("price", "desc")
+        );
+
+        const querySnapshot = await getDocs(q);
         const productsList = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
@@ -96,7 +101,7 @@ export default function Home() {
                 )}
                 <div className="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 dark:border-gray-800">
                   <span className="text-lg font-extrabold text-amber-600 dark:text-amber-500">
-                    {product.price}
+                    ₹{product.price.toLocaleString('en-IN')}
                   </span>
                   <span className={`text-xs font-bold px-2 py-1 rounded-md ${product.stock > 0 ? 'bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400'}`}>
                     {product.stock > 0 ? `${product.stock} in stock` : 'Out of Stock'}
